@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Gloge</title>
+
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+	<script>
+		function setMsg() {
+			var msg = window.location.search.substring(1);
+			msg = msg.replace(/%C3%A4/g, "\u00e4"); // ä
+			msg = msg.replace(/%C3%B6/g, "\u00f6"); // ö
+			msg = msg.replace(/%C3%BC/g, "\u00fc"); // ü
+			msg = msg.replace(/%C3%84/g, "\u00c4"); // Ä
+			msg = msg.replace(/%C3%96/g, "\u00d6"); // Ö
+			msg = msg.replace(/%C3%9C/g, "\u00dc"); // Ü
+
+			msg = msg.replace(/%27/g, "'"); // '
+			msg = msg.replace(/%22/g, "\""); // '
+			msg = msg.replace(/%20/g, " "); // '
+			msg = msg.replace(/---/g, "&mdash;")
+			msg = msg.replace(/--/g, "&ndash;")
+			msg = msg.replace(/-/g, " ")
+
+			if (msg.length > 0)
+				document.getElementById("msg").innerHTML = msg;
+			else if (msg.length == 0)
+				document.getElementById("quote").innerHTML = "";
+		}
+	</script>
+</head>
+
+<body style="background-color: white;" onload="setMsg()">
+	<div style="height: 200px; width: 500px; margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+		<h1 id="msg" style="color: black; text-align: center;">dasch doch gloge</h1>
+		<p id="quote" style="color: black; text-align: right;">&mdash; gloge.ch</p>
+	</div>
+</body>
+
+</html>
